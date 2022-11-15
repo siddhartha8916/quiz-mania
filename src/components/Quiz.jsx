@@ -87,7 +87,7 @@ const Quiz = () => {
         })}
       </div>
       {completed && <h4>You scored {score}/{max_score} correct answers</h4>}
-      <button className="check-ans-btn" onClick={checkAnswers}>Check Answers</button>
+      {questions && <button className="check-ans-btn" onClick={checkAnswers}>Check Answers</button>}
     </div>
   );
 };
