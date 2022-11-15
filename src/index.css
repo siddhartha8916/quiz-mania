@@ -151,3 +151,13 @@ button:focus-visible {
   background-color: rgb(165, 176, 226);
   color: #000;
 }
+
+.green{
+  background-color: rgb(130, 255, 130);
+  color: #000;
+}
+
+.red{
+  background-color: rgb(255, 130, 130);
+  color: #000;
+}

@@ -1,10 +1,10 @@
 import React from "react";
 
-const QuizQuestion = ({ ques, updateAnswer }) => {
+const QuizQuestion = ({ ques, updateAnswer, isCompleted }) => {
   return (
     <div className="single-question">
       <h2>{ques.question}</h2>
-      {ques.options.map((opt,index) => {
+      {!isCompleted && ques.options.map((opt,index) => {
         return (
           <span
             className={ques.answer === opt ? "checked" : ""}
@@ -13,6 +13,15 @@ const QuizQuestion = ({ ques, updateAnswer }) => {
               updateAnswer(ques.id, opt);
             }}
           >
+            {opt}
+          </span>
+        );
+      })}
+      {isCompleted && ques.options.map((opt,index) => {
+        return (
+          <span
+            className={ques.correct_answer === opt ? "green" : ""}
+            key={index+1}>
             {opt}
           </span>
         );

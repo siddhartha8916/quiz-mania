@@ -7,7 +7,7 @@ const Quiz = () => {
 
   const [questions, setQuestions] = useState([]);
   const [score, setScore] = useState(null);
-  const [completed, setCompleted] = useState(false);
+  const [isCompleted, setIsCompleted] = useState(false);
 
   useEffect(() => {
     const getQuestions = async () => {
@@ -68,7 +68,7 @@ const Quiz = () => {
         }
       });
       setScore(sc);
-      setCompleted(true);
+      setIsCompleted(true);
     } else {
       console.log("Fill all the questions");
     }
@@ -83,11 +83,12 @@ const Quiz = () => {
               ques={ques}
               key={ques.id}
               updateAnswer={updateAnswer}
+              isCompleted={isCompleted}
             />
           );
         })}
       </div>
-      {completed && (
+      {isCompleted && (
         <h4>
           You scored {score}/{max_score} correct answers
         </h4>
