@@ -20,7 +20,7 @@ const QuizQuestion = ({ ques, updateAnswer, isCompleted }) => {
       {isCompleted && ques.options.map((opt,index) => {
         return (
           <span
-            className={ques.correct_answer === opt ? "green" : ""}
+            className={ques.correct_answer === opt ? "green" : ques.answer === opt ? 'red' : ''}
             key={index+1}>
             {opt}
           </span>

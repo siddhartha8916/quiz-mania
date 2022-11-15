@@ -2,7 +2,7 @@ import React, { useState, useEffect, Fragment } from "react";
 import { nanoid } from "nanoid";
 import QuizQuestion from "./QuizQuestion";
 
-const Quiz = ({ handleStart }) => {
+const Quiz = () => {
   let max_score = 5;
 
   const [questions, setQuestions] = useState([]);

@@ -14,7 +14,7 @@ function App() {
     <div className="App">
       <div className="quiz-container">
         {!start && <StartQuiz handleStart={handleStart} />}
-        {start && <Quiz handleStart={handleStart} />}
+        {start && <Quiz />}
       </div>
     </div>
   );
