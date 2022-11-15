@@ -2,25 +2,31 @@ import React, { useState, useEffect, Fragment } from "react";
 import { nanoid } from "nanoid";
 import QuizQuestion from "./QuizQuestion";
 
-const Quiz = () => {
+const Quiz = ({ handleStart }) => {
   let max_score = 5;
 
   const [questions, setQuestions] = useState([]);
   const [score, setScore] = useState(null);
   const [isCompleted, setIsCompleted] = useState(false);
 
-  useEffect(() => {
-    const getQuestions = async () => {
-      const res = await fetch("https://opentdb.com/api.php?amount=5");
-      const data = await res.json();
-      setQuestions(handleQuestions(data.results));
-    };
+  const getQuestions = async () => {
+    const res = await fetch("https://opentdb.com/api.php?amount=5");
+    const data = await res.json();
+    setQuestions(handleQuestions(data.results));
+  };
 
+  useEffect(() => {
     getQuestions();
     return () => {
       setQuestions([]);
     };
   }, []);
+
+  const restartQuiz = () => {
+    setIsCompleted(false)
+    getQuestions();
+
+  };
 
   const handleQuestions = (questions) => {
     let updatedQuestions = [];
@@ -94,8 +100,11 @@ const Quiz = () => {
         </h4>
       )}
       {questions.length > 0 && (
-        <button className="check-ans-btn" onClick={checkAnswers}>
-          Check Answers
+        <button
+          className="check-ans-btn"
+          onClick={isCompleted ? restartQuiz : checkAnswers}
+        >
+          {isCompleted ? "Restart Quiz" : "Check Answers"}
         </button>
       )}
     </div>

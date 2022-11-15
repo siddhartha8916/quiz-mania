@@ -7,7 +7,6 @@ function App() {
   const [start, setStart] = useState(false);
 
   const handleStart = () => {
-    console.log("Starting Quiz");
     setStart(true);
   };
 
@@ -15,7 +14,7 @@ function App() {
     <div className="App">
       <div className="quiz-container">
         {!start && <StartQuiz handleStart={handleStart} />}
-        {start && <Quiz />}
+        {start && <Quiz handleStart={handleStart} />}
       </div>
     </div>
   );
