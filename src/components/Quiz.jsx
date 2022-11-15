@@ -23,6 +23,7 @@ const Quiz = ({ handleStart }) => {
   }, []);
 
   const restartQuiz = () => {
+    setQuestions([]);
     setIsCompleted(false)
     getQuestions();
 
