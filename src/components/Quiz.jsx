@@ -51,27 +51,28 @@ const Quiz = () => {
   }
 
   const updateAnswer = (questionId, answer) => {
-    setQuestions(questions.map(( ques )=>{
-      return ques.id === questionId ? {...ques, answer:answer} : ques
-    }))
+    setQuestions(
+      questions.map((ques) => {
+        return ques.id === questionId ? { ...ques, answer: answer } : ques;
+      })
+    );
   };
 
   const checkAnswers = () => {
-    let sc = 0
-    const allAnswered = questions.every(ques => ques.answer);
+    let sc = 0;
+    const allAnswered = questions.every((ques) => ques.answer);
     if (allAnswered) {
-      questions.forEach((ques)=>{
+      questions.forEach((ques) => {
         if (ques.answer === ques.correct_answer) {
           sc = sc + 1;
         }
-      })
+      });
       setScore(sc);
-      setCompleted(true)
+      setCompleted(true);
     } else {
-      console.log('Fill all the questions');
+      console.log("Fill all the questions");
     }
-    
-  }
+  };
 
   return (
     <div className="quiz">
@@ -86,8 +87,16 @@ const Quiz = () => {
           );
         })}
       </div>
-      {completed && <h4>You scored {score}/{max_score} correct answers</h4>}
-      {questions && <button className="check-ans-btn" onClick={checkAnswers}>Check Answers</button>}
+      {completed && (
+        <h4>
+          You scored {score}/{max_score} correct answers
+        </h4>
+      )}
+      {questions.length > 0 && (
+        <button className="check-ans-btn" onClick={checkAnswers}>
+          Check Answers
+        </button>
+      )}
     </div>
   );
 };
